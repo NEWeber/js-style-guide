@@ -843,23 +843,23 @@ For more information see [Truth Equality and JavaScript](//javascriptweblog.word
 
     ```javascript
     // good
+    function test () {
+        console.log( 'test' );
+    }
+
+    // good
     dog.set( 'attr', {
         age:    '1 year',
         breed:  'Bernese Mountain Dog'
-    });
+    } );
 
-    // good
-    function test () {
+    // bad
+    function test (){
         console.log( 'test' );
     }
 
     // bad
-    function test () {
-        console.log( 'test' );
-    }
-
-    // bad
-    dog.set( 'attr', {
+    dog.set( 'attr',{
         age:    '1 year',
         breed:  'Bernese Mountain Dog'
     } );
@@ -879,7 +879,7 @@ For more information see [Truth Equality and JavaScript](//javascriptweblog.word
     };
 
     f( 1, 2, 3 );
-    
+
     a[ 0 ];
 
     // bad
@@ -890,9 +890,9 @@ For more information see [Truth Equality and JavaScript](//javascriptweblog.word
     var f = function(a, b, c) {
         ...
     };
-    
+
     f(1, 2, 3);
-    
+
     a[0];
     ```
 
@@ -935,7 +935,7 @@ For more information see [Truth Equality and JavaScript](//javascriptweblog.word
             .attr( 'width',  ( r adius + margin ) * 2 )
         .append( 'svg:g' )
             .attr( 'transform', 'translate(' + ( radius + margin ) + ',' + ( radius + margin ) + ')' )
-            .call( tron.led ); 
+            .call( tron.led );
 
     // bad
     var leds = stage.selectAll( '.led' ).data( data ).enter().append( 'svg:svg' ).class( 'led', true )
