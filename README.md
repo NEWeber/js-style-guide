@@ -303,7 +303,7 @@ From [Steve Kwan](#kwan-best-practices):
         return items + '</ul>';
     }
     ```
-- As much as possible, strings should be externalized to a separate "strings" module. This makes our code more readable, drier, and easier to maintain. Examples where this makes sense: data attribute names, selectors, events, etc.
+- As much as possible, strings should be externalized to a separate "strings" module. This makes our code more readable, DRYer, and easier to maintain. Examples where this makes sense: data attribute names, selectors, events, etc.
 
     ```javascript
     // strings.js
