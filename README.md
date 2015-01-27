@@ -303,6 +303,35 @@ From [Steve Kwan](#kwan-best-practices):
         return items + '</ul>';
     }
     ```
+- As much as possible, strings should be externalized to a separate "strings" module. This makes our code more readable, DRYer, and easier to maintain. Examples where this makes sense: data attribute names, selectors, events, etc.
+
+    ```javascript
+    // strings.js
+    module.exports.selectors = {
+        item:  '.item',
+        items: '.items'
+    };
+
+    module.exports.events = {
+        thingUpdated: 'updated.thing',
+        thingClosed:  'closed.thing'
+    };
+    ```
+
+    ```javascript
+    // example-usage.js
+    var strings   = require( './strings' );
+    var selectors = strings.selectors;
+    var events    = strings.events;
+
+    $( document ).bind( events.thingUpdated, function () {
+        // do things
+    });
+
+    $( document ).delegate( selectors.items, 'click', function () {
+        // do stuff
+    });
+    ```
 
 [[↑ back to top]](#TOC)
 
@@ -879,7 +908,7 @@ For more information see [Truth Equality and JavaScript](//javascriptweblog.word
     };
 
     f( 1, 2, 3 );
-    
+
     a[ 0 ];
 
     // bad
@@ -890,9 +919,9 @@ For more information see [Truth Equality and JavaScript](//javascriptweblog.word
     var f = function(a, b, c) {
         ...
     };
-    
+
     f(1, 2, 3);
-    
+
     a[0];
     ```
 
@@ -935,7 +964,7 @@ For more information see [Truth Equality and JavaScript](//javascriptweblog.word
             .attr( 'width',  ( r adius + margin ) * 2 )
         .append( 'svg:g' )
             .attr( 'transform', 'translate(' + ( radius + margin ) + ',' + ( radius + margin ) + ')' )
-            .call( tron.led ); 
+            .call( tron.led );
 
     // bad
     var leds = stage.selectAll( '.led' ).data( data ).enter().append( 'svg:svg' ).class( 'led', true )
