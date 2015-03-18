@@ -883,7 +883,7 @@ For more information see [Truth Equality and JavaScript](//javascriptweblog.word
     }
 
     // bad
-    function test () {
+    function test (){
         console.log( 'test' );
     }
 
